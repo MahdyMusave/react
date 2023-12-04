@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import Header from "./component/header";
+import "./app.css";
 const App = () => {
   // let name = "Mahdy";
   const [name, setName] = useState("mahdy");
@@ -17,6 +18,15 @@ const App = () => {
     { id: "7", name: "tangerine", description: "i like tangerine " },
     { id: "8", name: "rambutan", description: "i do not know" },
   ]);
+  const [display, setDisplay] = useState(false);
+
+  const handleDisplay = (bool) => {
+    if (bool === true) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+  };
   const changeName = () => {
     // name = "Amir";
     setName("Ali");
@@ -30,6 +40,27 @@ const App = () => {
   };
   return (
     <>
+      <Header logo="MahdyMusave" />
+      <div className="btn-container">
+        {!display && (
+          <button
+            onClick={() => {
+              handleDisplay(true);
+            }}
+          >
+            Show
+          </button>
+        )}
+        {display && (
+          <button
+            onClick={() => {
+              handleDisplay(false);
+            }}
+          >
+            Hide
+          </button>
+        )}
+      </div>
       <div className="">
         <h1>
           {
@@ -47,25 +78,26 @@ const App = () => {
         </button>
       </div>
       <div className="fruit">
-        {fruit.map((fru, index) => {
-          return (
-            <>
-              <ul key={fru.id}>
-                <li>{fru.id}</li>
-                <li>{fru.name}</li>
-                <li>{fru.description}</li>
-              </ul>
-              <button
-                key={fru.index}
-                onClick={() => {
-                  handleFruid(fru.id);
-                }}
-              >
-                delete Fruit
-              </button>
-            </>
-          );
-        })}
+        {display &&
+          fruit.map((fru, index) => {
+            return (
+              <>
+                <ul key={fru.id}>
+                  <li>{fru.id}</li>
+                  <li>{fru.name}</li>
+                  <li>{fru.description}</li>
+                </ul>
+                <button
+                  key={fru.index}
+                  onClick={() => {
+                    handleFruid(fru.id);
+                  }}
+                >
+                  delete Fruit
+                </button>
+              </>
+            );
+          })}
       </div>
     </>
   );
