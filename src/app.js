@@ -1,103 +1,169 @@
 import { useState } from "react";
-import Header from "./component/header";
 import "./app.css";
 const App = () => {
-  // let name = "Mahdy";
-  const [name, setName] = useState("mahdy");
-  const [fruit, setFruit] = useState([
-    { id: "1", name: "apple", description: "apple is nice" },
-    { id: "2", name: "banana", description: "banana is supper good" },
-    { id: "3", name: "papaya", description: "papaya is very well" },
-    { id: "4", name: "pineapple", description: "pineapple is supper nicy" },
-    { id: "5", name: "sapota", description: "sapota is for me" },
-    {
-      id: "6",
-      name: "watermelon",
-      description: "watermelon have many wetamin",
-    },
-    { id: "7", name: "tangerine", description: "i like tangerine " },
-    { id: "8", name: "rambutan", description: "i do not know" },
-  ]);
-  const [display, setDisplay] = useState(false);
-
-  const handleDisplay = (bool) => {
-    if (bool === true) {
-      setDisplay(true);
-    } else {
-      setDisplay(false);
-    }
+  const [display_value, setDisplay_value] = useState("");
+  const [exprition, setExprition] = useState([]);
+  const handleClick = (value) => {
+    setDisplay_value(value);
+    setExprition([...exprition, value]);
   };
-  const changeName = () => {
-    // name = "Amir";
-    setName("Ali");
-  };
-  const handleFruid = (id) => {
-    const fruid = [...fruit];
-    // console.log(fruid);
-    const dle_fruit = fruid.filter((fruid_id) => fruid_id.id !== id);
-    // console.log(findIndex);
-    setFruit(dle_fruit);
+  const handleEqul = () => {
+    // console.log(exprition);
+    const result = exprition
+      .join("")
+      .split(/(\D)/g)
+      .map((value) => (value.match(/\d/g) ? parseInt(value, 0) : value))
+      .reduce((acc, value, index, array) => {
+        switch (value) {
+          case "+":
+            return (acc = acc + array[index + 1]);
+          case "-":
+            return (acc = acc - array[index + 1]);
+          default:
+            return acc;
+        }
+      });
+    setDisplay_value(result);
+    setExprition("");
   };
   return (
     <>
-      <Header logo="MahdyMusave" />
-      <div className="btn-container">
-        {!display && (
-          <button
-            onClick={() => {
-              handleDisplay(true);
-            }}
-          >
-            Show
-          </button>
-        )}
-        {display && (
-          <button
-            onClick={() => {
-              handleDisplay(false);
-            }}
-          >
-            Hide
-          </button>
-        )}
-      </div>
-      <div className="">
-        <h1>
-          {
-            //name
-            name
-          }
-        </h1>
-        <button
-          className="btn btn-info"
-          onClick={() => {
-            changeName();
-          }}
-        >
-          change name
-        </button>
-      </div>
-      <div className="fruit">
-        {display &&
-          fruit.map((fru, index) => {
-            return (
-              <>
-                <ul key={fru.id}>
-                  <li>{fru.id}</li>
-                  <li>{fru.name}</li>
-                  <li>{fru.description}</li>
-                </ul>
-                <button
-                  key={fru.index}
-                  onClick={() => {
-                    handleFruid(fru.id);
-                  }}
-                >
-                  delete Fruit
-                </button>
-              </>
-            );
-          })}
+      <div className="conatiner">
+        <div className="inner-container">
+          <h2 className="integer-value">{display_value}</h2>
+          <div className="exprition">{exprition}</div>
+          <div className="row">
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(1);
+                }}
+              >
+                1
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(2);
+                }}
+              >
+                2
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(3);
+                }}
+              >
+                3
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick("+");
+                }}
+              >
+                +
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(4);
+                }}
+              >
+                4
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(5);
+                }}
+              >
+                5
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(6);
+                }}
+              >
+                6
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick("-");
+                }}
+              >
+                -
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(7);
+                }}
+              >
+                7
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(8);
+                }}
+              >
+                8
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick(9);
+                }}
+              >
+                9
+              </button>
+            </div>
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleClick("*");
+                }}
+              >
+                *
+              </button>
+            </div>
+            <div className="col-25 zero">
+              <button
+                onClick={() => {
+                  handleClick(0);
+                }}
+              >
+                0
+              </button>
+            </div>
+
+            <div className="col-25">
+              <button
+                onClick={() => {
+                  handleEqul();
+                }}
+              >
+                =
+              </button>
+            </div>
+
+            <div className="operators"></div>
+          </div>
+        </div>
       </div>
     </>
   );
