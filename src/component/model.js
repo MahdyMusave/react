@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 const Model = (props) => {
-  const [model_display, setModel_display] = useState(true);
-  const closeModel = () => {
-    setModel_display(false);
-  };
+  // const [model_display, setModel_display] = useState(true);
+  // const closeModel = () => {
+  //   setModel_display(false);
+  // };
   return (
     <>
-      {model_display && (
+      {
+        /*props.model_display && (*/
         <div className="model-container">
           <div className="model">
             {/*<h1>Model</h1>
@@ -19,7 +20,7 @@ const Model = (props) => {
             {props.children}
             <button
               onClick={() => {
-                closeModel();
+                props.modelDisplay();
               }}
               className="btn-model"
             >
@@ -27,7 +28,8 @@ const Model = (props) => {
             </button>
           </div>
         </div>
-      )}
+        /*)*/
+      }
     </>
   );
 };
