@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./component/header";
 import "./app.css";
+import Model from "./component/model";
 const App = () => {
   // let name = "Mahdy";
   const [name, setName] = useState("mahdy");
@@ -19,6 +20,7 @@ const App = () => {
     { id: "8", name: "rambutan", description: "i do not know" },
   ]);
   const [display, setDisplay] = useState(false);
+  const [model_display, setModel_display] = useState(true);
 
   const handleDisplay = (bool) => {
     if (bool === true) {
@@ -38,8 +40,21 @@ const App = () => {
     // console.log(findIndex);
     setFruit(dle_fruit);
   };
+  const modelDisplay = () => {
+    setModel_display(false);
+  };
   return (
     <>
+      {/*< Model />*/}
+      {model_display && (
+        <Model modelDisplay={modelDisplay}>
+          <h1>Model</h1>
+          <p>
+            The model is a representation of the data that you want to analyze.
+            It consists of one or more tables, each containing rows and
+          </p>
+        </Model>
+      )}
       <Header logo="MahdyMusave" />
       <div className="btn-container">
         {!display && (
