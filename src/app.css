@@ -1,0 +1,23 @@
+body{
+  background-color: #ddd;
+}
+.container{
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.inner-content{
+  width: 25%;
+  border: 2px solid black;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+}
+.hotel-price{
+  color: rgb(255, 85, 0);
+  margin: 10px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}

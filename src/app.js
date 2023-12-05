@@ -1,7 +1,9 @@
+import TripList from "./component/tripList";
+import "./app.css";
 const App = () => {
   return (
     <>
-     
+      <TripList />
     </>
   );
 };
