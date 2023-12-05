@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const ForFruit = (props) => {
-  const [value, setValue] = useState("");
-  const [date, setDate] = useState("");
+  // const [value, setValue] = useState("");
+  // const [date, setDate] = useState("");
+  const value = useRef();
+  const date = useRef();
 
   // const handleInput = (e) => {
   //   // console.log(e.target.value);
@@ -10,22 +12,24 @@ const ForFruit = (props) => {
   // };
 
   const handleResest = () => {
-    setValue("");
-    setDate("");
+    // setValue("");
+    // setDate("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(value.current.value);
+    console.log(date.current.value);
 
-    const event = {
-      name: value,
-      description: date,
-      id: Math.floor(Math.random() * 10000),
-    };
+    // const event = {
+    //   name: value,
+    //   description: date,
+    //   id: Math.floor(Math.random() * 10000),
+    // };
 
-    // console.log(event);
-    props.onHandler_add(event);
+    // // console.log(event);
+    // props.onHandler_add(event);
 
-    handleResest();
+    // handleResest();
   };
   return (
     <>
@@ -44,10 +48,7 @@ const ForFruit = (props) => {
               minLength="1"
               maxLength="48"
               placeholder="add your fruit`s name"
-              onChange={(e) => {
-                setValue(e.target.value);
-              }}
-              value={value}
+              ref={value}
             />
           </div>
 
@@ -58,10 +59,7 @@ const ForFruit = (props) => {
               name="date"
               id="date"
               placeholder="add your fruit`s name"
-              onChange={(e) => {
-                setDate(e.target.value);
-              }}
-              value={date}
+              ref={date}
             />
           </div>
 
@@ -71,9 +69,7 @@ const ForFruit = (props) => {
         </form>
         <div className="typing">
           <h3>you type this :</h3>
-          <p style={{ color: "tomato" }}>
-            {value} & {date}
-          </p>
+
           <button
             className="btn-resent"
             onClick={() => {
