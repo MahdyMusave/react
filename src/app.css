@@ -127,6 +127,13 @@
   padding: 15px;
 
 }
+.form-container form label{
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #587977;
+  font-family: Monospaced;
+}
 .form-container form>div{
   margin: 10px;
   display: flex;
@@ -179,4 +186,12 @@
   padding: 10px;
   border-radius: 10px;
 
+}
+.form-container select{
+  width: 60%;
+  padding: 15px;
+  border: none;
+}
+.form-container option{
+  padding: 15px !important;
 }

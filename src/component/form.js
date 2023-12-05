@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const ForFruit = (props) => {
   const [value, setValue] = useState("");
   const [date, setDate] = useState("");
+  const [selct_value, setSelect_value] = useState();
 
   // const handleInput = (e) => {
   //   // console.log(e.target.value);
@@ -12,6 +13,7 @@ const ForFruit = (props) => {
   const handleResest = () => {
     setValue("");
     setDate("");
+    setSelect_value("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +29,11 @@ const ForFruit = (props) => {
 
     handleResest();
   };
+
+  // const handleSelect = (e) => {
+  //   // console.log(e.target.value);
+  //   setSelect_value(e.target.value);
+  // };
   return (
     <>
       <div className="form-container">
@@ -65,6 +72,24 @@ const ForFruit = (props) => {
             />
           </div>
 
+          <div>
+            <label htmlFor="fruit">select your fruit</label>
+            <select
+              name="fruit"
+              id="fruit"
+              onChange={(e) => {
+                /*handleSelect(e);*/
+                setSelect_value(e.target.value);
+              }}
+            >
+              <option value={selct_value}></option>
+              <option value="apple">apple</option>
+              <option value="banna">banna</option>
+              <option value="orange">orange</option>
+              <option value="kiwe">kiwe</option>
+            </select>
+          </div>
+
           <button className="btn" type="submit">
             Add new fruit
           </button>
@@ -72,7 +97,7 @@ const ForFruit = (props) => {
         <div className="typing">
           <h3>you type this :</h3>
           <p style={{ color: "tomato" }}>
-            {value} & {date}
+            {value} & {date} &{selct_value}
           </p>
           <button
             className="btn-resent"
