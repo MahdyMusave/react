@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./component/header";
 import "./app.css";
 import Model from "./component/model";
+import ForFruit from "./component/form";
 const App = () => {
   // let name = "Mahdy";
   const [name, setName] = useState("mahdy");
@@ -42,6 +43,13 @@ const App = () => {
   };
   const modelDisplay = () => {
     setModel_display(false);
+  };
+  const add_fruit = (item) => {
+    // console.log(item);
+    setFruit((prev) => {
+      // console.log([...prev]);
+      return [...prev, item];
+    });
   };
   return (
     <>
@@ -114,6 +122,7 @@ const App = () => {
             );
           })}
       </div>
+      <ForFruit onHandler_add={add_fruit} />
     </>
   );
 };
