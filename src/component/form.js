@@ -17,17 +17,17 @@ const ForFruit = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value.current.value);
-    console.log(date.current.value);
+    // console.log(value.current.value);
+    // console.log(date.current.value);
 
-    // const event = {
-    //   name: value,
-    //   description: date,
-    //   id: Math.floor(Math.random() * 10000),
-    // };
+    const event = {
+      name: value.current.value,
+      description: date.current.value,
+      id: Math.floor(Math.random() * 10000),
+    };
 
     // // console.log(event);
-    // props.onHandler_add(event);
+    props.onHandler_add(event);
 
     // handleResest();
   };
