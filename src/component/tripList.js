@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 
 const TripList = () => {
   const [hotels, setHotels] = useState([]);
+  const [url, setUrl] = useState("http://localhost:3000/trips");
   // console.log(fetch("http://localhost:3000/trips"));
-  console.log(hotels);
+  // console.log(hotels);
   useEffect(() => {
-    fetch("http://localhost:3000/trips")
+    fetch(url)
       .then((response) =>
         //       // console.log(response.json())
         response.json()
@@ -15,7 +16,7 @@ const TripList = () => {
         // return setHotel(data);
         return setHotels(data);
       });
-  }, []);
+  }, [url]);
 
   // console.log(hotel);
 
@@ -34,6 +35,22 @@ const TripList = () => {
             </div>
           );
         })}
+      </div>
+      <div className="filter">
+        <button
+          onClick={() => {
+            setUrl("http://localhost:3000/trips?loc=iran");
+          }}
+        >
+          Iranian Trips
+        </button>
+        <button
+          onClick={() => {
+            setUrl("http://localhost:3000/trips");
+          }}
+        >
+          All Trips
+        </button>
       </div>
     </>
   );
