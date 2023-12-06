@@ -10,7 +10,12 @@ const cardImages = [
 
 const App = () => {
   const shuffleChar = () => {
-    const shuffledChartImg = [...cardImages, ...cardImages];
+    const shuffledChartImg = [...cardImages, ...cardImages]
+      .sort(() => {
+        return Math.random() - 0.5;
+      })
+      .map((card) => ({ ...card, id: Math.random()}));
+
     console.log(shuffledChartImg);
   };
 
