@@ -1,16 +1,16 @@
 import React from "react";
 
 const SingleChard = (props) => {
-  const handleChoisce_cover=()=>{
-   props.onChoice(props.cards);
-  }
+  const handleChoisce_cover = () => {
+    props.onChoice(props.cards);
+  };
   return (
     <>
       <div className="App">
         <h1>Memory game</h1>
         <button
           onClick={() => {
-            props.handleshow()
+            props.handleshow();
           }}
         >
           New Game

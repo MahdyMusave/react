@@ -39,8 +39,8 @@ const App = () => {
     <>
       <SingleChard
         cards={cards}
-        chose2={chose2}
-        setChose2={setChose2}
+        chose2={choseOne}
+        setChose2={choseTwo}
         shuffleChar={shuffleChar}
         onChoice={handleChoisce}
         handleshow={handleshow}
