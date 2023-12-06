@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./app.css";
 const cardImages = [
   { src: "/img/helmet-1.png", matched: false },
@@ -9,14 +10,18 @@ const cardImages = [
 ];
 
 const App = () => {
+  const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
   const shuffleChar = () => {
     const shuffledChartImg = [...cardImages, ...cardImages]
       .sort(() => {
         return Math.random() - 0.5;
       })
-      .map((card) => ({ ...card, id: Math.random()}));
+      .map((card) => ({ ...card, id: Math.random() }));
 
-    console.log(shuffledChartImg);
+    setCards(shuffledChartImg);
+    setTurns(0);
+    // console.log(shuffledChartImg);
   };
 
   return (
@@ -30,6 +35,11 @@ const App = () => {
         >
           New Game
         </button>
+      </div>
+      <div className="cards">
+        {cards.map((card) => {
+          return <img src={card.src} alt="card-img" />;
+        })}
       </div>
     </>
   );
