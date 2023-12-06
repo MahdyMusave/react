@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./app.css";
 import SingleChard from "./component/singleChard";
 const cardImages = [
@@ -24,6 +24,8 @@ const App = () => {
 
     setCards(shuffledChartImg);
     setTurns(0);
+    setChoseTwo(null);
+    setChoseOne(null);
     // console.log(shuffledChartImg);
   };
 
@@ -35,15 +37,50 @@ const App = () => {
     // console.log(card);
     choseOne ? setChoseTwo(card) : setChoseOne(card);
   };
+
+  //compare 2 selected cards
+  useEffect(() => {
+    if (choseOne && choseTwo) {
+      // console.log(choseOne);
+      // return console.log(choseTwo);
+      if (choseOne.src === choseTwo.src) {
+        // console.log("match");
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === choseOne.src) {
+              resentTurn();
+              return { ...card, matched: true };
+            } else {
+              resentTurn();
+              return card;
+            }
+          });
+        });
+        resentTurn();
+      } else {
+        setTimeout(() => resentTurn(), 1000);
+      }
+    }
+  }, [choseOne, choseTwo]);
+
+  //show what happen when
+  // console.log(cards);
+
+  const resentTurn = () => {
+    setChoseOne(null);
+    setChoseTwo(null);
+    setTurns((prevTurn) => prevTurn + 1);
+  };
+
   return (
     <>
       <SingleChard
         cards={cards}
-        chose2={choseOne}
-        setChose2={choseTwo}
         shuffleChar={shuffleChar}
         onChoice={handleChoisce}
         handleshow={handleshow}
+        choseOne={choseOne}
+        choseTwo={choseTwo}
       />
     </>
   );

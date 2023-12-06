@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SingleChard = (props) => {
-  const handleChoisce_cover = () => {
-    props.onChoice(props.cards);
+  const handleChoisce_cover = (card) => {
+    // console.log(card);
+    props.onChoice(card);
   };
+
   return (
     <>
-      <div className="App">
+      <div className={"App"}>
         <h1>Memory game</h1>
         <button
           onClick={() => {
@@ -20,11 +22,19 @@ const SingleChard = (props) => {
         {props.cards.map((card) => {
           return (
             <div className="card" key={card.id}>
-              <div>
+              <div
+                className={
+                  card.matched === true ||
+                  props.choseOne === card ||
+                  card === props.choseTwo
+                    ? "flipper"
+                    : ""
+                }
+              >
                 <img className="front-img" src={card.src} alt="card-img" />;
                 <img
                   onClick={() => {
-                    props.onChoice(card.id);
+                    handleChoisce_cover(card);
                   }}
                   className="back-img"
                   src="/img/cover.png"
