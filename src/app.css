@@ -49,9 +49,19 @@ button:hover{
   position: absolute;
   top: 0;
   left: 0;
+  transition:all ease-in 0.2s;
 }
 .cards .flipper .front-img{
   transform: rotateY(0deg);
   top: 28px;
-  left: 10px;;
+  left: 10px;
+  transition-delay:0.2s ;
+}
+.card .back-img{
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+.flipper .back-img{
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }
