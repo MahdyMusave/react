@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./app.css";
+import SingleChard from "./component/singleChard";
 const cardImages = [
   { src: "/img/helmet-1.png", matched: false },
   { src: "/img/potion-1.png", matched: false },
@@ -12,6 +13,8 @@ const cardImages = [
 const App = () => {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [choseOne, setChoseOne] = useState([]);
+  const [choseTwo, setChoseTwo] = useState([]);
   const shuffleChar = () => {
     const shuffledChartImg = [...cardImages, ...cardImages]
       .sort(() => {
@@ -24,23 +27,24 @@ const App = () => {
     // console.log(shuffledChartImg);
   };
 
+  const handleshow = () => {
+    shuffleChar();
+  };
+
+  const handleChoisce = (card) => {
+    // console.log(card);
+    choseOne ? setChoseTwo(card) : setChoseOne(card);
+  };
   return (
     <>
-      <div className="App">
-        <h1>Memory game</h1>
-        <button
-          onClick={() => {
-            shuffleChar();
-          }}
-        >
-          New Game
-        </button>
-      </div>
-      <div className="cards">
-        {cards.map((card) => {
-          return <img src={card.src} alt="card-img" />;
-        })}
-      </div>
+      <SingleChard
+        cards={cards}
+        chose2={chose2}
+        setChose2={setChose2}
+        shuffleChar={shuffleChar}
+        onChoice={handleChoisce}
+        handleshow={handleshow}
+      />
     </>
   );
 };

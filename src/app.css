@@ -25,3 +25,21 @@ button:hover{
   background-color: #c23866;
   color: #fff;
 }
+.cards{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+.cards .card{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  
+}
+.card>div{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
