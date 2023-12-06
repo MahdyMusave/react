@@ -1,17 +1,25 @@
+body{
+  background-color: #010101;
+}
 .App{
   max-width: 860px;
   margin: 40px auto;
 }
+.App h1{
+  color: tomato;
+  margin: 10px 0;
+}
 
 button{
   background: none;
-  border: 2px solid #fff;
+  border: 2px solid rgb(90, 175, 157);
   padding: 6px;
   border-radius:4px;
-  color:#fff;
+  color:#3df1f1;
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
+  
 }
 button:hover{
   background-color: #c23866;
