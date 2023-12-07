@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useCallback, useEffect, useState } from "react";
 
 const TripList = () => {
   const [hotels, setHotels] = useState([]);
   const [url, setUrl] = useState("http://localhost:3000/trips");
   // console.log(fetch("http://localhost:3000/trips"));
   // console.log(hotels);
-  useEffect(() => {
-    fetch(url)
-      .then((response) =>
-        //       // console.log(response.json())
-        response.json()
-      )
-      .then((data) => {
-        //       // console.log(data);
-        // return setHotel(data);
-        return setHotels(data);
-      });
+
+  const FetchData = useCallback(async () => {
+    const response = await fetch(url);  
+    const json = await response.json();
+    setHotels(json);
   }, [url]);
+  console.log(hotels); //we are on loop here
+  // console.log(FetchData());
+  useEffect(() => {
+    //   fetch(url)
+    //     .then((response) =>
+    //       //       // console.log(response.json())
+    //       response.json()
+    //     )
+    //     .then((data) => {
+    //       //       // console.log(data);
+    //       // return setHotel(data);
+    //       return setHotels(data);
+    //     });
+    FetchData();
+  }, [url, FetchData]);
 
   // console.log(hotel);
 
