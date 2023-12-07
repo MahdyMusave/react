@@ -1,0 +1,21 @@
+{
+  "articles":[{
+    "id":"1",
+    "title":"welcome to the site",
+    "author":"mahdy",
+    "body":"Lorem ipsum dolor sit ametas they are positioned, do not form sentences with a complete senseas they are positioned, do not form sentences with a complete sense,"
+  },
+  {
+    "id":"2",
+    "title":"this is the first site",
+    "author":"ali",
+    "body":" dolor sit ametas they are positioned, do not form sentences with a complete senseas they are positioned, do not form sentences with a complete sense,"
+  },
+  {
+    "id":"2",
+    "title":"onther site is here",
+    "author":"maryem",
+    "body":"they are positioned, do not form sentences with a complete senseas they are positioned, do not form sentences with a complete sense,"
+  }
+]
+}
