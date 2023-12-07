@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const Hyome = () => {
-  return (
-    <div>Hyome</div>
-  )
-}
+const Home = () => {
+  return <div>Home</div>;
+};
 
-export default Hyome
+export default Home;
