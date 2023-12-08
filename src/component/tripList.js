@@ -6,11 +6,14 @@ const TripList = () => {
   // console.log(fetch("http://localhost:3000/trips"));
   // console.log(hotels);
   const [url, setUrl] = useState("http://localhost:3000/trips");
-  const { hotels } = useHook(url);
+  const { hotels, isLoading, error } = useHook(url);
   // console.log(hotel);
 
   return (
     <>
+      {isLoading && <div>Loading trips...</div>}
+      {error && <div>{ error}</div>}
+
       <div className="container">
         {hotels.map((hotel) => {
           return (
